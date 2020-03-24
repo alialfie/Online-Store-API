@@ -19,17 +19,16 @@ public class BuyerResource {
     private BuyerRepository BuyerRepository;
 
     @PostMapping(path="/add") // Map ONLY POST Requests
-    public @ResponseBody String addNewUser (  @RequestParam String name
-            ,
-                                             @RequestParam String email,  @RequestParam String password
-            ,  @RequestParam String username, @RequestParam String age
-            ,  @RequestParam String adrress) {
+    public @ResponseBody String addNewUser (  @RequestParam String name,@RequestParam String email,  @RequestParam String password
+            ,  @RequestParam String username, @RequestParam String age,  @RequestParam String adrress)
+    {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-
         Buyer n = new Buyer();
         n.setUsername(username);
+
         n.setName(name);
+        System.out.printf(n.getName());
         n.setEmail(email);
         n.setAge(age);
         n.setPassword(password);
