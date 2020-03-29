@@ -6,13 +6,12 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Buyer extends User
 {
-    @NotNull
-    @NotEmpty
-    @NotBlank
+    @Size(min = 1)
     private String adrress;
 
     public String getAdrress() {
@@ -20,13 +19,6 @@ public class Buyer extends User
     }
 
     public void setAdrress( String adrress) {
-        if(adrress.equals("null") || adrress.equals("Null") || adrress.equals("") || adrress.equals(" ")||adrress.length()==0) {
-            this.adrress=null;
-        }
-        else
-        {
-            this.adrress = adrress;
-        }
-
+        this.adrress = adrress;
     }
 }
