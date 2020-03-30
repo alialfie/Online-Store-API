@@ -1,20 +1,29 @@
 package com.example.onlinestore.UserManagment;
 
+import com.example.onlinestore.UserManagment.User.User;
+import com.example.onlinestore.UserManagment.User.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class Validation {
-    static List<User> users;
-    UserRepository userRepository;
 
-    public Validation(){
-        Iterable it = userRepository.findAll();
-        users = new ArrayList<User>();
-        for (Object user : it) {
-            System.out.println(user);
-            users.add((User)user);
-        }
+public class Validation
+{
+
+    static List<User> users;
+    @Autowired
+    UserRepository userRepository;
+    public Validation()
+    {
+            Iterable<User> it = userRepository.findAll();
+            users = new ArrayList<User>();
+            for (Object user : it)
+            {
+                System.out.println(user);
+                users.add((User)user);
+            }
     }
 
     public static boolean validUsername(String username){
@@ -36,7 +45,7 @@ public class Validation {
 
         if (!rfc2822.matcher(email).matches()) return false;
 
-        for(int i=0; i<users.size(); i++){
+       for(int i=0; i<users.size(); i++){
             if(email.equals(users.get(i).getEmail())){
                 return false;
             }

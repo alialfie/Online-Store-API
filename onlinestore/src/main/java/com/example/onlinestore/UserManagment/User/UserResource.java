@@ -7,10 +7,7 @@ import com.example.onlinestore.UserManagment.Buyer.BuyerService;
 import com.example.onlinestore.UserManagment.StoreOwner.StoreOwner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path = "/User") // This means URL's start with /demo (after Application path)
@@ -26,7 +23,7 @@ public class UserResource {
              @RequestParam String age, @RequestParam int Type,  String adrress)
     {
         UserService test = new UserService();
-        if (test.checkValidation(name,email,password,username,age))
+        if (test.checkValidation(email,password,username))
         {
             switch (Type) {
                 case 1:
@@ -41,7 +38,7 @@ public class UserResource {
                     buyer.setAdrress(adrress);
                     BuyerService buyerservice = new BuyerService();
                     if(!buyerservice.checkValidation(adrress))
-                        return "Error!!!\nData Not Saved";
+                        return "Error!!!\nData Not Saved222";
                     else
                        userRepository.save(buyer);
                        break;
@@ -68,7 +65,11 @@ public class UserResource {
             }
             return "saved";
         }
-        return "Error!!!\nData Not Saved";
+        else
+        {
+            return "Error!!!\nData Not Saved";
+        }
     }
+
 
 }
