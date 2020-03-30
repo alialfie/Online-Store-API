@@ -1,21 +1,11 @@
-package com.example.onlinestore.UserManagment;
+package com.example.onlinestore.UserManagment.User;
 
-
-import com.example.onlinestore.UserManagment.User;
-import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-import com.sun.istack.NotNull;
-
-import javax.persistence.*;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-
 @Entity
-public abstract class User {
+public class User {
     @Id
     @Size(min = 1)
     private String username;
@@ -29,6 +19,24 @@ public abstract class User {
 
     @Size(min = 1)
     private String age;
+
+    /*
+    * 1-Buyer
+    * 2-Admin
+    * 3-StoreOwner
+    * */
+  //  @Size(min=1 )
+    private int Type;
+
+
+    public void setType(  int type) {
+        this.Type = type;
+    }
+
+    public int getType() {
+        return Type;
+    }
+
 
     public String getUsername() { return username; }
 

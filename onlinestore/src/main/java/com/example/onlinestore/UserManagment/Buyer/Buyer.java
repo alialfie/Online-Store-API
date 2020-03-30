@@ -1,11 +1,8 @@
 package com.example.onlinestore.UserManagment.Buyer;
 
-import com.example.onlinestore.UserManagment.User;
-import com.sun.istack.NotNull;
+import com.example.onlinestore.UserManagment.User.User;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
