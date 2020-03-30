@@ -5,19 +5,18 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
-public class User {
+public abstract class user {
     @Id
-    @Size(min = 1)
+     @NotNull
     private String username;
-
-    @Size(min = 1)
+    @NotNull
     private String password;
-    @Size(min = 1)
+    @NotNull
     private String email;
-    @Size(min = 1)
+    @NotNull
     private String name;
 
-    @Size(min = 1)
+    @NotNull
     private String age;
 
     /*
@@ -25,17 +24,7 @@ public class User {
     * 2-Admin
     * 3-StoreOwner
     * */
-  //  @Size(min=1 )
-    private int Type;
 
-
-    public void setType(  int type) {
-        this.Type = type;
-    }
-
-    public int getType() {
-        return Type;
-    }
 
 
     public String getUsername() { return username; }
