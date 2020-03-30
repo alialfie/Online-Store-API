@@ -1,6 +1,6 @@
 package com.example.onlinestore.UserManagment;
 
-import com.example.onlinestore.UserManagment.User.User;
+import com.example.onlinestore.UserManagment.User.user;
 import com.example.onlinestore.UserManagment.User.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,17 +12,17 @@ import java.util.regex.Pattern;
 public class Validation
 {
 
-    static List<User> users;
+    static List<user> users;
     @Autowired
     UserRepository userRepository;
     public Validation()
     {
-            Iterable<User> it = userRepository.findAll();
-            users = new ArrayList<User>();
+            Iterable<user> it = userRepository.findAll();
+            users = new ArrayList<user>();
             for (Object user : it)
             {
                 System.out.println(user);
-                users.add((User)user);
+                users.add((com.example.onlinestore.UserManagment.User.user)user);
             }
     }
 

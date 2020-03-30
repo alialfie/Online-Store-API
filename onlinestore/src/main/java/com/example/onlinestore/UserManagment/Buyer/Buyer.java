@@ -1,14 +1,15 @@
 package com.example.onlinestore.UserManagment.Buyer;
 
-import com.example.onlinestore.UserManagment.User.User;
+import com.example.onlinestore.UserManagment.User.user;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Buyer extends User
+public class Buyer extends user
 {
-    @Size(min = 1)
+    @NotNull
     private String adrress;
 
     public String getAdrress() {
