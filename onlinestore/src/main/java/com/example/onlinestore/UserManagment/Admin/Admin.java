@@ -1,9 +1,9 @@
-package com.example.onlinestore.UserManagment.StoreOwner;
+package com.example.onlinestore.UserManagment.Admin;
 
 import com.example.onlinestore.UserManagment.User.User;
 
 import javax.persistence.Entity;
 
 @Entity
-public class StoreOwner extends User {
+public class Admin extends User {
 }
