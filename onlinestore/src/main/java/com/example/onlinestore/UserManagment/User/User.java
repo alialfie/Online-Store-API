@@ -5,7 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
-public abstract class user {
+public abstract class User {
     @Id
      @NotNull
     private String username;
