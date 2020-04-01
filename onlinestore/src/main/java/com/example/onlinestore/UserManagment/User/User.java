@@ -1,31 +1,31 @@
 package com.example.onlinestore.UserManagment.User;
 
 
+import com.example.onlinestore.UserManagment.Admin.Admin;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
+@JsonDeserialize(as = Admin.class)  // JSON cannot deserialize an abstract type, so in order to use an array of User
+                                    // when validating, we tell JSON to deserialize as a subclass i.e. Admin
 
 @Entity
 public abstract class User {
     @Id
-     @NotNull
     private String username;
+
     @NotNull
     private String password;
+
     @NotNull
     private String email;
+
     @NotNull
     private String name;
 
     @NotNull
     private String age;
-
-    /*
-    * 1-Buyer
-    * 2-Admin
-    * 3-StoreOwner
-    * */
-
-
 
     public String getUsername() { return username; }
 
