@@ -16,7 +16,7 @@ class UserResourceTest {
     HttpRequest httpReqst ;
     HttpURLConnection URLConn;
     URL myURL;
-    String POST_Req ="http://localhost:8080/user/add?username=Username&password=12345678&email=lamyaaraed@stud.fci-cu.edu.eg&name=User&age=26&type=2";
+    String POST_Req ="http://localhost:8080/user/add?username=itsmeUser&password=12345678&email=lamyaaraed@stud.fci-cu.edu.eg&name=User&age=26&type=2";
     String GET_Req = "http://localhost:8080/user/all/";
     @Test
     void add() throws IOException {
