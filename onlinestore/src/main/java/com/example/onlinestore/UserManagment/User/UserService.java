@@ -11,6 +11,8 @@ import com.example.onlinestore.UserManagment.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     @Autowired
@@ -24,7 +26,8 @@ public class UserService {
 
 
     public String addUser(String username, String password , String email, String name,
-                          String age, int type, String address){
+                          String age, int type, String address, String addedByUsername,
+                          String addedByPassword){
 
         Validation validate = new Validation();
 
@@ -51,12 +54,22 @@ public class UserService {
                     buyerRepository.save(buyer);
                 break;
             case 2:
+                Optional<Admin> adminOp = adminRepository.findById(addedByUsername);
+                Admin admin2;
+                if(adminOp.isPresent()){
+                    admin2 = adminOp.get();
+                    if(!admin2.getPassword().equals(addedByPassword)) return "Incorrect admin password";
+                }else{
+                    return "Admin doesn't exist";
+                }
+
                 Admin admin = new Admin();
                 admin.setName(name);
                 admin.setEmail(email);
                 admin.setPassword(password);
                 admin.setUsername(username);
                 admin.setAge(age);
+                admin.setAddedBy(admin2);
                 adminRepository.save(admin);
                 break;
             case 3:

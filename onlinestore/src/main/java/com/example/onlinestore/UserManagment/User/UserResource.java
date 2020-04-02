@@ -23,9 +23,9 @@ public class UserResource {
     @PostMapping(path = "/add") // Map ONLY POST Requests
     public @ResponseBody
     String add(@RequestParam String username, @RequestParam String password , @RequestParam String email,@RequestParam String name,
-             @RequestParam String age, @RequestParam int type,  String address)
+             @RequestParam String age, @RequestParam int type,  String address, String addedByUsername, String addedByPassword)
     {
-        return userService.addUser(username, password, email, name, age, type, address);
+        return userService.addUser(username, password, email, name, age, type, address, addedByUsername, addedByPassword);
     }
 
     @GetMapping(path="/all")
