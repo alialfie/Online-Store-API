@@ -29,9 +29,18 @@ public class UserResource {
     }
 
     @GetMapping(path="/all")
-
     public @ResponseBody Iterable<User> getAllUsers() {
         // This returns a JSON or XML with the users
         return userService.getAllUsers();
+    }
+
+    @PostMapping(path = "/login")
+    public @ResponseBody String login(@RequestParam String username, @RequestParam String password){
+        return userService.login(username, password);
+    }
+
+    @GetMapping(path="/logout")
+    public @ResponseBody String logout() {
+        return userService.logout();
     }
 }
