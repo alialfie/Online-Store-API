@@ -35,8 +35,8 @@ public class UserResource {
     }
 
     @PostMapping(path = "/login")
-    public @ResponseBody String login(@RequestParam String username, @RequestParam String password){
-        return userService.login(username, password);
+    public @ResponseBody String login(@RequestParam String user, @RequestParam String password){
+        return userService.login(user, password);
     }
 
     @GetMapping(path="/logout")

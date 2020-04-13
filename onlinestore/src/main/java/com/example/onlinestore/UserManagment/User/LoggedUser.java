@@ -4,11 +4,11 @@ public class LoggedUser {
     static User loggedUser;
 
     LoggedUser(){ this.loggedUser = null;}
-    public void setUser(User user){
-        this.loggedUser = user;
+    static public void setUser(User user){
+        loggedUser = user;
     }
 
-    public User getUser(){
-        return this.loggedUser;
+    static public User getUser(){
+        return loggedUser;
     }
 }

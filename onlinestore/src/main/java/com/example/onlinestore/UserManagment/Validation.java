@@ -64,9 +64,9 @@ public class Validation {
         return true;
     }
 
-    public User validLogin(String username,String password){
+    public User validLogin(String username, String password){
         for (User user : users){
-            if(user.getUsername().equals(username) && user.getPassword().equals(password))
+            if( (user.getUsername().equals(username)||user.getEmail().equals(username)) && user.getPassword().equals(password))
                 return user;
         }
         return null;

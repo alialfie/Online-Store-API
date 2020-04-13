@@ -23,7 +23,6 @@ public class UserService {
     private AdminRepository adminRepository;
     @Autowired
     private StoreOwnerRepository storeownerRepository;
-    static LoggedUser logged = new LoggedUser();
 
     public String addUser(String username, String password , String email, String name,
                           String age, int type, String address, String addedByUsername,
@@ -90,27 +89,28 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public String login(String username, String password){
-        if(logged.getUser() == null) {
+    public String login(String username,String password){
+        if(LoggedUser.getUser() == null) {
             Validation validate = new Validation();
             User user = validate.validLogin(username, password);
             if (user == null)
-                return "You entered a wrong data";
+                return "Invalid username/email or password";
             else {
-                logged.setUser(user);
-                return "Welcome back";
+                LoggedUser.setUser(user);
+                return "Welcome Back!";
             }
         }
         else
-            return "you are already logged in";
+            return "You Are Already Logged In, " + LoggedUser.loggedUser.getName();
     }
 
     public String logout(){
-        User user = logged.getUser();
-        if(user == null) return "you cant access this page, you are not logged in";
+        User user = LoggedUser.getUser();
+
+        if(user == null) return "You Cant Access This Page, Please Log-in";
         else {
-            logged.setUser(null);
-            return "see you soon";
+            LoggedUser.setUser(null);
+            return "See You Soon!";
         }
     }
 }
