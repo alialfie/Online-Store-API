@@ -1,7 +1,9 @@
-package com.example.onlinestore.UserManagment.User;
+package com.example.onlinestore.UserManagment.Model;
+
+import com.example.onlinestore.UserManagment.Model.User;
 
 public class LoggedUser {
-    static User loggedUser;
+    public static User loggedUser;
 
     LoggedUser(){ this.loggedUser = null;}
     static public void setUser(User user){

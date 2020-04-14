@@ -1,16 +1,19 @@
-package com.example.onlinestore.UserManagment.User;
+package com.example.onlinestore.UserManagment.Services;
 
-import com.example.onlinestore.UserManagment.Admin.Admin;
-import com.example.onlinestore.UserManagment.Admin.AdminRepository;
-import com.example.onlinestore.UserManagment.Buyer.Buyer;
-import com.example.onlinestore.UserManagment.Buyer.BuyerRepository;
-import com.example.onlinestore.UserManagment.Buyer.BuyerService;
-import com.example.onlinestore.UserManagment.StoreOwner.StoreOwner;
-import com.example.onlinestore.UserManagment.StoreOwner.StoreOwnerRepository;
-import com.example.onlinestore.UserManagment.Validation;
+import com.example.onlinestore.UserManagment.Model.Admin;
+import com.example.onlinestore.UserManagment.Repository.AdminRepository;
+import com.example.onlinestore.UserManagment.Model.Buyer;
+import com.example.onlinestore.UserManagment.Repository.BuyerRepository;
+import com.example.onlinestore.UserManagment.Model.LoggedUser;
+import com.example.onlinestore.UserManagment.Model.User;
+import com.example.onlinestore.UserManagment.Model.StoreOwner;
+import com.example.onlinestore.UserManagment.Repository.StoreOwnerRepository;
+import com.example.onlinestore.UserManagment.Repository.UserRepository;
+import com.example.onlinestore.UserManagment.Validator.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -86,9 +89,26 @@ public class UserService {
     }
 
     public Iterable<User> getAllUsers() {
-        return userRepository.findAll();
+        if((LoggedUser.getUser() instanceof Admin)) {
+            return userRepository.findAll();
+        }
+        else {
+            ArrayList<User> tmp = new ArrayList<>();
+            return tmp;
+        }
     }
-
+/*
+    public Iterable<User> getAllUsers22()
+    {
+           if((LoggedUser.getUser() instanceof Admin)) {
+               return userRepository.findAll();
+        }
+        else {
+            ArrayList<User> tmp = new ArrayList<>();
+            return tmp;
+        }
+   }
+*/
     public String login(String username,String password){
         if(LoggedUser.getUser() == null) {
             //Validation validate = new Validation();

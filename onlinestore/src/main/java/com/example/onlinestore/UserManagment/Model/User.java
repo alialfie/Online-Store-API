@@ -1,7 +1,7 @@
-package com.example.onlinestore.UserManagment.User;
+package com.example.onlinestore.UserManagment.Model;
 
 
-import com.example.onlinestore.UserManagment.Admin.Admin;
+import com.example.onlinestore.UserManagment.Model.Admin;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import javax.persistence.*;

@@ -1,6 +1,4 @@
-package com.example.onlinestore.UserManagment.Admin;
-
-import com.example.onlinestore.UserManagment.User.User;
+package com.example.onlinestore.UserManagment.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;

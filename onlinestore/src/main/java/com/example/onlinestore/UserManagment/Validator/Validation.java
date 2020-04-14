@@ -1,7 +1,7 @@
-package com.example.onlinestore.UserManagment;
+package com.example.onlinestore.UserManagment.Validator;
 
 
-import com.example.onlinestore.UserManagment.User.User;
+import com.example.onlinestore.UserManagment.Model.User;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;

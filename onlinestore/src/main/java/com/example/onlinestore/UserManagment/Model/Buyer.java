@@ -1,6 +1,4 @@
-package com.example.onlinestore.UserManagment.Buyer;
-
-import com.example.onlinestore.UserManagment.User.User;
+package com.example.onlinestore.UserManagment.Model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

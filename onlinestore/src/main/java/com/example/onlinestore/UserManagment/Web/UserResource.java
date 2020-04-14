@@ -1,12 +1,9 @@
-package com.example.onlinestore.UserManagment.User;
+package com.example.onlinestore.UserManagment.Web;
 
-import com.example.onlinestore.UserManagment.Admin.Admin;
-import com.example.onlinestore.UserManagment.Admin.AdminRepository;
-import com.example.onlinestore.UserManagment.Buyer.Buyer;
-import com.example.onlinestore.UserManagment.Buyer.BuyerRepository;
-import com.example.onlinestore.UserManagment.Buyer.BuyerService;
-import com.example.onlinestore.UserManagment.StoreOwner.StoreOwner;
-import com.example.onlinestore.UserManagment.StoreOwner.StoreOwnerRepository;
+import com.example.onlinestore.UserManagment.Model.LoggedUser;
+import com.example.onlinestore.UserManagment.Model.User;
+import com.example.onlinestore.UserManagment.Repository.UserRepository;
+import com.example.onlinestore.UserManagment.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +30,13 @@ public class UserResource {
         // This returns a JSON or XML with the users
         return userService.getAllUsers();
     }
-
+/*
+    @GetMapping(path="/test")
+    public @ResponseBody Iterable<User> GetUsers() {
+        // This returns a JSON or XML with the users
+        return userService.getAllUsers22();
+    }
+*/
     @PostMapping(path = "/login")
     public @ResponseBody String login(@RequestParam String user, @RequestParam String password){
         return userService.login(user, password);
