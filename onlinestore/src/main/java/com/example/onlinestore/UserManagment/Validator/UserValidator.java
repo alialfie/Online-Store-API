@@ -1,33 +1,72 @@
 package com.example.onlinestore.UserManagment.Validator;
 
 
+import com.example.onlinestore.UserManagment.Model.Admin;
 import com.example.onlinestore.UserManagment.Model.User;
+import com.example.onlinestore.UserManagment.Services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
+import javax.swing.text.html.Option;
+import java.util.List;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
-public class Validation {
-    private final RestTemplate restTemplate;
-    private RestTemplateBuilder restTemplateBuilder;
-    User[] users;
+@Component
+public class UserValidator {
+//    private final RestTemplate restTemplate;
+//    private RestTemplateBuilder restTemplateBuilder;
+//    User[] users;
 
-    public  Validation(){
-        restTemplateBuilder = new RestTemplateBuilder();
+    @Autowired
+    private UserService userService;
 
-        this.restTemplate = restTemplateBuilder.build();
+    private Iterable<User> users;
 
-        String url = "http://localhost:8080/user/all/";
-        ResponseEntity<User[]> response = this.restTemplate.getForEntity(url, User[].class);
+//    public UserValidator(){
+//        restTemplateBuilder = new RestTemplateBuilder();
+//
+//        this.restTemplate = restTemplateBuilder.build();
+//
+//        String url = "http://localhost:8080/user/all/";
+//        ResponseEntity<User[]> response = this.restTemplate.getForEntity(url, User[].class);
+//
+//        users = response.getBody();
+//    }
 
-        users = response.getBody();
+    public String validate(String username, String email, String password){
+        users = userService.getAllUsers();
+        if(!validUsername(username)) return "This username is invalid or already taken";
+
+        if(!validEmail(email)) return "This email is invalid or already registered";
+
+        if(!validPassword(password)) return "Invalid password";
+
+        return "valid";
     }
 
-    public boolean validUsername(String username){
+    public User login(String id, String password){
+        List<User> users = userService.getByUsernameOrEmail(id, id);
+
+        if(users.size() == 1){
+            User user = users.get(0);
+            if(user.getPassword().equals(password)){
+                return user;
+            }
+        }
+
+        return null;
+    }
+
+    private boolean validUsername(String username){
+
         if(username == null || username.length() < 6) return false;
 
-        for(int i=0; i<users.length; i++){
-            if(username.equals(users[i].getUsername())){
+        for(User user: users){
+            if(username.equals(user.getUsername())){
                 return false;
             }
         }
@@ -35,15 +74,15 @@ public class Validation {
         return true;
     }
 
-    public boolean validEmail(String email){
+    private boolean validEmail(String email){
         Pattern rfc2822 = Pattern.compile(
                 "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
         );
 
         if (!rfc2822.matcher(email).matches()) return false;
 
-        for(int i=0; i<users.length; i++){
-            if(email.equals(users[i].getEmail())){
+        for(User user: users){
+            if(email.equals(user.getEmail())){
                 return false;
             }
         }
@@ -51,7 +90,7 @@ public class Validation {
         return true;
     }
 
-    public boolean validPassword(String password){
+    private boolean validPassword(String password){
         if(password.length() < 8) return false;
 
         return true;

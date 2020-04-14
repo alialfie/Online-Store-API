@@ -9,11 +9,11 @@ import com.example.onlinestore.UserManagment.Model.User;
 import com.example.onlinestore.UserManagment.Model.StoreOwner;
 import com.example.onlinestore.UserManagment.Repository.StoreOwnerRepository;
 import com.example.onlinestore.UserManagment.Repository.UserRepository;
-import com.example.onlinestore.UserManagment.Validator.Validation;
+import com.example.onlinestore.UserManagment.Validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,14 +30,6 @@ public class UserService {
     public String addUser(String username, String password , String email, String name,
                           String age, int type, String address, String addedByUsername,
                           String addedByPassword){
-
-        Validation validate = new Validation();
-
-        if(!validate.validUsername(username)) return "This username is invalid or already taken";
-
-        if(!validate.validEmail(email)) return "This email is invalid or already registered";
-
-        if(!validate.validPassword(password)) return "Invalid password";
 
         switch (type) {
             case 1:
@@ -89,13 +81,11 @@ public class UserService {
     }
 
     public Iterable<User> getAllUsers() {
-        if((LoggedUser.getUser() instanceof Admin)) {
-            return userRepository.findAll();
-        }
-        else {
-            ArrayList<User> tmp = new ArrayList<>();
-            return tmp;
-        }
+        return userRepository.findAll();
+    }
+
+    public Optional<User> getById(String id){
+        return userRepository.findById(id);
     }
 /*
     public Iterable<User> getAllUsers22()
@@ -162,5 +152,9 @@ public class UserService {
             }
         }
         return null;
+    }
+
+    public List<User> getByUsernameOrEmail(String username, String email){
+        return userRepository.findByUsernameOrEmail(username, email);
     }
 }

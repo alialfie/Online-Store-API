@@ -8,12 +8,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.http.HttpRequest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserResourceTest {
-    HttpRequest httpReqst ;
     HttpURLConnection URLConn;
     URL myURL;
     String POST_Req ="http://localhost:8080/user/add?username=itsmeUser&password=12345678&email=lamyaaraed@stud.fci-cu.edu.eg&name=User&age=26&type=2";
