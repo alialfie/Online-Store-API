@@ -1,22 +1,15 @@
 package com.example.onlinestore.UserManagment;
 
-import com.example.onlinestore.UserManagment.Buyer.Buyer;
+
 import com.example.onlinestore.UserManagment.User.User;
-import com.example.onlinestore.UserManagment.User.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class Validation {
     private final RestTemplate restTemplate;
     private RestTemplateBuilder restTemplateBuilder;
-
     User[] users;
 
     public  Validation(){
@@ -64,11 +57,33 @@ public class Validation {
         return true;
     }
 
-    public User validLogin(String username, String password){
+    /*public User validLogin(String username, String password){
         for (User user : users){
-            if( (user.getUsername().equals(username)||user.getEmail().equals(username)) && user.getPassword().equals(password))
-                return user;
+            if( (user.getUsername().equals(username)||user.getEmail().equals(username)) && user.getPassword().equals(password)){
+                Optional<Admin> isAdmin = adminRepository.findById(username);
+                Optional<Buyer> isBuyer = buyerRepository.findById(username);
+                Optional<StoreOwner> isStoreOwner = storeownerRepository.findById(username);
+                if(isAdmin.isPresent()) {
+                    Admin admin2;
+                    admin2 = isAdmin.get();
+                    System.out.println("its an admin");
+                    return admin2;
+                }
+                else if (isBuyer.isPresent()) {
+                    Buyer UserBuyer;
+                    UserBuyer = isBuyer.get();
+                    System.out.println("its a buyer");
+                    return UserBuyer;
+                }
+                else if(isStoreOwner.isPresent()) {
+                    StoreOwner UserOwner;
+                    UserOwner = isStoreOwner.get();
+                    System.out.println("its a store owner");
+                    return UserOwner;
+                }
+                //return user;
+            }
         }
         return null;
-    }
+    }*/
 }

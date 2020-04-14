@@ -91,8 +91,8 @@ public class UserService {
 
     public String login(String username,String password){
         if(LoggedUser.getUser() == null) {
-            Validation validate = new Validation();
-            User user = validate.validLogin(username, password);
+            //Validation validate = new Validation();
+            User user = validLogin(username, password);
             if (user == null)
                 return "Invalid username/email or password";
             else {
@@ -112,5 +112,35 @@ public class UserService {
             LoggedUser.setUser(null);
             return "See You Soon!";
         }
+    }
+
+    User validLogin(String username, String password){
+        for (User user : getAllUsers()){
+            //todo handle the email thingy again 3lashan el findByID!!!
+            if( (user.getUsername().equals(username)||user.getEmail().equals(username)) && user.getPassword().equals(password)){
+                Optional<Admin> isAdmin = adminRepository.findById(username);
+                Optional<Buyer> isBuyer = buyerRepository.findById(username);
+                Optional<StoreOwner> isStoreOwner = storeownerRepository.findById(username);
+                if(isAdmin.isPresent()) {
+                    Admin admin2;
+                    admin2 = isAdmin.get();
+                    System.out.println("its an admin");
+                    return admin2;
+                }
+                else if (isBuyer.isPresent()) {
+                    Buyer UserBuyer;
+                    UserBuyer = isBuyer.get();
+                    System.out.println("its a buyer");
+                    return UserBuyer;
+                }
+                else if(isStoreOwner.isPresent()) {
+                    StoreOwner UserOwner;
+                    UserOwner = isStoreOwner.get();
+                    System.out.println("its a store owner");
+                    return UserOwner;
+                }
+            }
+        }
+        return null;
     }
 }

@@ -38,7 +38,10 @@ public class UserResource {
     public @ResponseBody String login(@RequestParam String user, @RequestParam String password){
         return userService.login(user, password);
     }
-
+    @GetMapping(path = "/loggeduser")
+    public @ResponseBody User loged(){
+        return LoggedUser.getUser();
+    }
     @GetMapping(path="/logout")
     public @ResponseBody String logout() {
         return userService.logout();
