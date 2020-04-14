@@ -1,18 +1,12 @@
 package com.example.onlinestore.UserManagment.Validator;
 
 
-import com.example.onlinestore.UserManagment.Model.Admin;
 import com.example.onlinestore.UserManagment.Model.User;
-import com.example.onlinestore.UserManagment.Services.UserService;
+import com.example.onlinestore.UserManagment.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
-import javax.swing.text.html.Option;
 import java.util.List;
-import java.util.Optional;
 import java.util.regex.Pattern;
 
 @Component

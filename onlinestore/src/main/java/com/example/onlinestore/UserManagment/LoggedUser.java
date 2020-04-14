@@ -1,4 +1,4 @@
-package com.example.onlinestore.UserManagment.Model;
+package com.example.onlinestore.UserManagment;
 
 import com.example.onlinestore.UserManagment.Model.User;
 

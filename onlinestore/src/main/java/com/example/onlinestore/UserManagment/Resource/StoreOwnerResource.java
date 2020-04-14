@@ -1,4 +1,4 @@
-package com.example.onlinestore.UserManagment.Web;
+package com.example.onlinestore.UserManagment.Resource;
 
         import com.example.onlinestore.UserManagment.Model.StoreOwner;
         import org.springframework.beans.factory.annotation.Autowired;

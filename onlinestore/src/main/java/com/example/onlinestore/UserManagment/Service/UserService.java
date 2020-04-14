@@ -1,15 +1,14 @@
-package com.example.onlinestore.UserManagment.Services;
+package com.example.onlinestore.UserManagment.Service;
 
 import com.example.onlinestore.UserManagment.Model.Admin;
 import com.example.onlinestore.UserManagment.Repository.AdminRepository;
 import com.example.onlinestore.UserManagment.Model.Buyer;
 import com.example.onlinestore.UserManagment.Repository.BuyerRepository;
-import com.example.onlinestore.UserManagment.Model.LoggedUser;
+import com.example.onlinestore.UserManagment.LoggedUser;
 import com.example.onlinestore.UserManagment.Model.User;
 import com.example.onlinestore.UserManagment.Model.StoreOwner;
 import com.example.onlinestore.UserManagment.Repository.StoreOwnerRepository;
 import com.example.onlinestore.UserManagment.Repository.UserRepository;
-import com.example.onlinestore.UserManagment.Validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
