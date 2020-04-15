@@ -45,12 +45,8 @@ we used springboot framework in order to build our online store api
 
 # included libraries
 * java.util.List
-        * used to store user info during runtime and returning or printing it.
+    * used to store user info during runtime and returning or printing it.
 * java.util.regex.Pattern
-        * used for defining text patterns used in UserValidator class.
+    * used for defining text patterns used in UserValidator class.
         
-  * Bullet list
-              * Nested bullet
-                  * Sub-nested bullet etc
-          * Bullet list item 2
 
