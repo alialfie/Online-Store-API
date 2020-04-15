@@ -28,9 +28,23 @@ Register
     
     
 Login
+
+    takes input from user in the form of a url it takes username and password or email and password to allow an already registered
+    user to log into the website and use the functionalities associated with its type. 
+    we check if the username or the email exist in the database or not then
+    we also check if the username and the password are actually associated so that no user can enter any password that's in
+    the database but only the password associated with their username or their email.
     
+    logging in is done by setting the entered user as a logged user in the logged user class.
     
 Logout
-
+    
+    logout simply sets the the loggeduser in the class of LoggedUser to null to signify that no user is logged in.
+    
 Show all users
+
+    can only be used while logged in and only when the user is an admin it returns a list of all the users in the systen with all of 
+    their information. if the user is not an admin we return an empty list to whoever tried to use that functionality as they are not
+    authorized to use it.
+    
 
