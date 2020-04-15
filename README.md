@@ -48,5 +48,27 @@ we used springboot framework in order to build our online store api
     * used to store user info during runtime and returning or printing it.
 * java.util.regex.Pattern
     * used for defining text patterns used in UserValidator class.
-        
+* javax.persistence.Entity 
+    * to define an entity in the database
+
+* javax.persistence.JoinColumn 
+    * to join columns for referencing and entity association.
+
+* javax.persistence.ManyToOne
+    * to make all admins have a reference to the admin that added them.
+
+* javax.validation.constraints.NotNull 
+    * to put a constraint on one of the attributes so that the user has to enter it.
+
+* org.springframework.data.repository.CrudRepository 
+    * Interface for generic CRUD operations on a repository for a specific type. we use some of its functions to manipulate our data.
+
+* org.springframework.stereotype.Service 
+    * Indicates that an annotated class is a "Service" by using @service annotation
+
+* org.springframework.web.bind.annotation.* 
+    * used for implementing web annotations such as @PostMapping and @GetMapping
+
+* org.springframework.stereotype.Controller 
+    * Indicates that an annotated class is a "Controller"
 
