@@ -40,4 +40,11 @@ Users can also register as a buyers ,
 
   can only be used while logged in and only when the user is an admin it shows all the users in the system.
     
+# used framework
+we used springboot framework in order to build our online store api
 
+# included libraries
+*java.util.List
+        *used to store user info during runtime and returning or printing it.
+*java.util.regex.Pattern
+        *used for defining text patterns used in UserValidator class.
