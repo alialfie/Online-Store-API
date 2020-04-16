@@ -1,6 +1,7 @@
 package com.example.onlinestore.UserManagment.ServiceTests;
 
 import com.example.onlinestore.OnlinestoreApplication;
+import com.example.onlinestore.UserManagment.LoggedUser;
 import com.example.onlinestore.UserManagment.Model.Buyer;
 import com.example.onlinestore.UserManagment.Model.User;
 import com.example.onlinestore.UserManagment.Repository.UserRepository;
@@ -66,5 +67,12 @@ public class UserServiceTests {
         assertEquals(found.size(), 1);
         assertEquals(found.get(0).getUsername(), username);
         assertEquals(found.get(0).getEmail(), email);
+    }
+
+    @Test
+    public void whenLoggedout_thenLoggedUserShouldBeNull(){
+        userService.logout();
+
+        assertEquals(LoggedUser.getUser(), null);
     }
 }
