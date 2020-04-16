@@ -90,33 +90,4 @@ public class UserValidator {
         return true;
     }
 
-    /*public User validLogin(String username, String password){
-        for (User user : users){
-            if( (user.getUsername().equals(username)||user.getEmail().equals(username)) && user.getPassword().equals(password)){
-                Optional<Admin> isAdmin = adminRepository.findById(username);
-                Optional<Buyer> isBuyer = buyerRepository.findById(username);
-                Optional<StoreOwner> isStoreOwner = storeownerRepository.findById(username);
-                if(isAdmin.isPresent()) {
-                    Admin admin2;
-                    admin2 = isAdmin.get();
-                    System.out.println("its an admin");
-                    return admin2;
-                }
-                else if (isBuyer.isPresent()) {
-                    Buyer UserBuyer;
-                    UserBuyer = isBuyer.get();
-                    System.out.println("its a buyer");
-                    return UserBuyer;
-                }
-                else if(isStoreOwner.isPresent()) {
-                    StoreOwner UserOwner;
-                    UserOwner = isStoreOwner.get();
-                    System.out.println("its a store owner");
-                    return UserOwner;
-                }
-                //return user;
-            }
-        }
-        return null;
-    }*/
 }

@@ -44,13 +44,7 @@ public class UserResource {
             return tmp;
         }
     }
-/*
-    @GetMapping(path="/test")
-    public @ResponseBody Iterable<User> GetUsers() {
-        // This returns a JSON or XML with the users
-        return userService.getAllUsers22();
-    }
-*/
+
     @PostMapping(path = "/login")
     public @ResponseBody String login(@RequestParam String user, @RequestParam String password){
         if(LoggedUser.getUser() == null) {
@@ -65,11 +59,6 @@ public class UserResource {
             return "You Are Already Logged In, " + LoggedUser.loggedUser.getName();
         }
 //        return userService.login(user, password);
-    }
-
-    @GetMapping(path = "/loggeduser")
-    public @ResponseBody User loged(){
-        return LoggedUser.getUser();
     }
 
     @GetMapping(path="/logout")
