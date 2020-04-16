@@ -7,13 +7,21 @@ import javax.validation.constraints.NotNull;
 public class Buyer extends User
 {
     @NotNull
-    private String adrress;
+    private String address;
 
-    public String getAdrress() {
-            return adrress;
+    public Buyer() {
     }
 
-    public void setAdrress( String adrress) {
-        this.adrress = adrress;
+    public Buyer(String username, @NotNull String password, @NotNull String email, @NotNull String name, @NotNull String age, @NotNull String address) {
+        super(username, password, email, name, age);
+        this.address = address;
+    }
+
+    public String getAddress() {
+            return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

@@ -24,9 +24,19 @@ public abstract class User {
     @NotNull
     private String name;
 
-
     @NotNull
     private String age;
+
+    public User() {
+    }
+
+    public User(String username, @NotNull String password, @NotNull String email, @NotNull String name, @NotNull String age) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+        this.age = age;
+    }
 
     public String getUsername() { return username; }
 

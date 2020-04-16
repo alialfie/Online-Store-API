@@ -1,4 +1,4 @@
-package com.example.onlinestore.UserManagment.User;
+package com.example.onlinestore.UserManagment;
 
 import org.junit.jupiter.api.Test;
 
