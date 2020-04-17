@@ -39,7 +39,7 @@ public class UserService {
                 buyer.setPassword(password);
                 buyer.setUsername(username);
                 buyer.setAge(age);
-                buyer.setAdrress(address);
+                buyer.setAddress(address);
                 BuyerService buyerservice = new BuyerService();
                 if(!buyerservice.checkValidation(address))
                     return "Invalid address";

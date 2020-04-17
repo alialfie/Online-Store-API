@@ -1,14 +1,14 @@
 package com.example.onlinestore.UserManagment.Model;
 
 
-import com.example.onlinestore.UserManagment.Model.Admin;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @JsonDeserialize(as = Admin.class)  // JSON cannot deserialize an abstract type, so in order to use an array of User
-                                    // when validating, we tell JSON to deserialize as a subclass i.e. Admin
+// when validating, we tell JSON to deserialize as a subclass i.e. Admin
 
 @Entity
 public abstract class User {
@@ -24,43 +24,53 @@ public abstract class User {
     @NotNull
     private String name;
 
-
     @NotNull
     private String age;
+
+    public User() {
+    }
+
+    public User(String username, @NotNull String password, @NotNull String email, @NotNull String name, @NotNull String age) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+        this.age = age;
+    }
 
     public String getUsername() { return username; }
 
     public void setUsername(  String username) {
-            this.username = username;
+        this.username = username;
     }
 
     public String getPassword() {
-            return password;
+        return password;
     }
 
     public String getEmail() {
         return email;
     }
     public void setPassword(String password) {
-            this.password = password;
+        this.password = password;
     }
 
     public void setEmail(String email) {
-            this.email = email;
+        this.email = email;
     }
     public void setName(String name) {
-            this.name = name;
+        this.name = name;
     }
     public String getName() {
-            return name;
+        return name;
     }
 
 
     public String getAge() {
-            return age;
+        return age;
     }
 
     public void setAge(String age) {
-            this.age = age;
+        this.age = age;
     }
 }
