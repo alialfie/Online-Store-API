@@ -29,7 +29,7 @@ public class UserRepositoryTests {
     public void whenFindByUsernameOrEmail_thenReturnUser(){
         //given
         Buyer buyer = new Buyer("testusername", "testpassword", "testemail@email.com", "testname",
-                                "testage", "testaddress");
+                "testage", "testaddress");
 
         buyerRepository.save(buyer);
 
